@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Udi Waizer</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
+</head>
+
+<body>
+  <x-dc>
+    <helmet>
+      <title>Udi Waizer</title>
+
+      <link rel="icon" type="image/svg+xml" href="favicon.svg">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Caveat:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+      <style>
+        html,
+        body {
+          margin: 0;
+          background: #0b0d10;
+          color: #f3f5f7;
+          -webkit-font-smoothing: antialiased
+        }
+
+        html {
+          scroll-behavior: smooth
+        }
+
+        a {
+          color: #f3f5f7;
+          text-decoration: none
+        }
+
+        a:hover {
+          color: #14d6c4
+        }
+
+        ::selection {
+          background: #14d6c4;
+          color: #0b0d10
+        }
+
+        @keyframes vtProg {
+          from {
+            transform: scaleY(0)
+          }
+
+          to {
+            transform: scaleY(1)
+          }
+        }
+      </style>
+    </helmet>
+
+    <div
+      style="background: #0b0d10; color: #f3f5f7; font-family: 'Cormorant Garamond',Georgia,serif; min-height: 100vh; position: relative; overflow-x: clip">
+
+      <section id="intro" data-screen-label="Intro" ref="{{ introRef }}"
+        style="position: relative; height: 660vh; background: #0b0d10">
+        <div style="position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#0b0d10">
+          <div data-screen-label="Hero"
+            style="position: absolute; inset: 0; z-index: 0; isolation: isolate; overflow: hidden; background: #0b0d10; display: grid; align-items: end; padding: clamp(60px,13vh,280px) clamp(20px,4vw,112px) clamp(18px,7vh,160px); box-sizing: border-box">
+            <img ref="{{ heroBgRef }}" src="assets/hero-portrait.jpg" alt="Udi Waizer"
+              style="will-change:translate;position:absolute;left:0;bottom:0;height:min(80%,80vw);width:auto;max-width:none;pointer-events:none;user-select:none;-webkit-mask:linear-gradient(90deg,#000 70%,transparent),linear-gradient(0deg,#000 80%,transparent);-webkit-mask-composite:source-in;mask:linear-gradient(90deg,#000 70%,transparent) intersect,linear-gradient(0deg,#000 80%,transparent)">
+            <div ref="{{ heroFgRef }}"
+              style="will-change:translate;position:relative;max-width:max(1200px,62.5vw);justify-self:start;margin-left:max(0px,min(calc(min(70vh,70vw) - clamp(20px,4vw,112px)),calc(100% - 340px)));align-self:center;text-align:left">
+              <sc-if value="{{ showHeroP }}" hint-placeholder-val="{{ true }}">
+                <p
+                  style="margin:0;font-size:clamp(22px,min(2.66vw,4.73vh),102px);line-height:1.2;max-width:max(798px,41.6vw);color:#dfe3e8;text-wrap:pretty">
+                  Years spent designing for human intent — now I train AI to do the same.<br>The best interface is the
+                  one you never have to learn.</p>
+              </sc-if>
+            </div>
+            <div ref="{{ heroFadeRef }}" aria-hidden="true"
+              style="position:absolute;left:0;right:0;bottom:0;height:45%;background:linear-gradient(to bottom,rgba(11,13,16,0),#0b0d10 85%);opacity:0;pointer-events:none;z-index:2">
+            </div>
+          </div>
+          <div ref="{{ stageRef }}" style="position:absolute;inset:0;will-change:opacity">
+            <img ref="{{ panRef }}" src="assets/intro-hero-4.jpg" alt=""
+              style="position:absolute;left:0;top:0;height:max(100%,84vw);width:auto;max-width:none;will-change:transform;user-select:none;pointer-events:none">
+            <div
+              style="position:absolute;top:15%;left:15%;right:6%;display:grid;justify-items:start;align-items:start;pointer-events:none">
+              <sc-for list="{{ lines }}" as="l" hint-placeholder-count="4">
+                <div ref="{{ l.ref }}"
+                  style="grid-area:1/1;max-width:max(980px,51vw);text-align:left;font-family:'Caveat',cursive;opacity:0;will-change:opacity,transform">
+                  <p
+                    style="margin:0;font-weight:400;font-size:clamp(22px,min(calc(3.4vw + 13px),7.2vh),160px);line-height:1.04;letter-spacing:-0.02em;color:#1f1d1e;text-wrap:balance;white-space:pre-line;text-shadow:none">
+                    {{ l.a }}<span style="font-style:normal">{{ l.em }}</span><span ref="{{ l.lateRef }}"
+                      style="display:block;opacity:0;will-change:opacity,transform">{{ l.late }}</span><sc-if
+                      value="{{ l.wink }}" hint-placeholder-val="{{ false }}"><svg viewBox="0 0 64 64"
+                        aria-label="winking face"
+                        style="display:inline-block;width:0.62em;height:0.62em;vertical-align:0em;margin-left:0.12em;overflow:visible;filter:none"
+                        fill="none" stroke="#1f1d1e" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                          d="M33 5.5c14.5-.8 26.2 11 25.6 26.4-.6 14.8-12.4 26.9-27 26.6C17 58.2 5.2 46.6 5.6 31.6 6 17.2 18.6 6.3 33 5.5">
+                        </path>
+                        <path d="M20.5 25.8c.9-.3 2.1.4 2 1.6-.1 1-1.3 1.6-2.2 1.1-.8-.5-.7-2.4.2-2.7z" fill="#1f1d1e">
+                        </path>
+                        <path d="M37.5 27.6c2.2-2.6 6.4-3 8.9-.4"></path>
+                        <path d="M18.2 39.4c4.4 6.6 13.6 9.4 21.4 5.8 3-1.4 5.2-3.4 6.7-5.9"></path>
+                        <path d="M44.6 37.8l2.4 1.7-.8 2.9"></path>
+                      </svg></sc-if></p>
+                  <p
+                    style="margin:clamp(6px,2.2vh,48px) 0 0;font-size:clamp(14px,min(1.25vw,3.2vh),48px);font-style:normal;color:#1f1d1e;text-shadow:none">
+                    {{ l.sub }}</p>
+                </div>
+              </sc-for>
+            </div>
+            <div ref="{{ cueRef }}"
+              style="position:absolute;left:50%;bottom:clamp(12px,3.3vh,72px);translate:-50% 0;display:flex;flex-direction:column;align-items:center;gap:12px;font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.2em;text-transform:uppercase;color:#1f1d1e;pointer-events:none">
+              <span>Scroll</span><span
+                style="width:1px;height:clamp(20px,3.7vh,80px);background:linear-gradient(#1f1d1e,rgba(31,29,30,0))"></span>
+            </div>
+            <div ref="{{ curtainRef }}"
+              style="position: fixed; inset: 0; z-index: 40; background: #0b0d10; opacity: 0; pointer-events: none; transition: opacity .6s ease">
+            </div>
+          </div>
+        </div>
+        <div id="prologue" data-chapter="0"
+          style="position:absolute;left:0;bottom:0;width:1px;height:100vh;pointer-events:none"></div>
+      </section>
+
+      <a href="#prologue" onClick="{{ skip }}" aria-label="Skip to portfolio" title="Skip to portfolio"
+        style="position: fixed; left: 50%; translate: -50% 0; bottom: clamp(12px,3.3vh,72px); z-index: 30; width: clamp(44px,min(2.92vw,5.2vh),112px); height: clamp(44px,min(2.92vw,5.2vh),112px); box-sizing: border-box; border-radius: 50%; border: 1.5px solid #f3f5f7; display: grid; place-items: center; color: #f3f5f7; font-size: clamp(18px,min(1.15vw,2vh),44px); line-height: 1; opacity: {{ skipOpacity }}; pointer-events: {{ skipPE }}; transition: opacity .8s ease,color .25s,border-color .25s; text-align: center"
+        style-hover="color:#14d6c4;border-color:#14d6c4">↓</a>
+
+
+      <div role="dialog" aria-modal="true" aria-label="{{ ov.title }}"
+        style="position:fixed;inset:0;z-index:60;background:#0b0d10;opacity:{{ ovOpacity }};transform:translateY({{ ovY }});pointer-events:{{ ovPE }};visibility:{{ ovVis }};transition:opacity .7s cubic-bezier(.65,0,.35,1),transform .9s cubic-bezier(.65,0,.35,1),visibility 0s linear {{ ovVisDelay }}">
+        <sc-if value="{{ ov.page }}" hint-placeholder-val="{{ false }}">
+          <iframe src="{{ ov.page }}" title="{{ ov.title }}"
+            style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#0b0d10"></iframe>
+        </sc-if>
+        <sc-if value="{{ ov.noPage }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;inset:0;overflow:auto">
+            <div style="position:relative;height:100vh;height:100svh">
+              <img src="{{ ov.img }}" alt="{{ ov.title }}"
+                style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+              <div
+                style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,13,16,.92),rgba(11,13,16,0) 60%)">
+              </div>
+              <div
+                style="position:absolute;left:clamp(16px,4vw,112px);right:clamp(16px,4vw,112px);bottom:clamp(40px,8vh,200px);display:flex;flex-direction:column;gap:clamp(12px,1.6vh,32px)">
+                <span
+                  style="font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.14em;text-transform:uppercase;color:#14d6c4">{{
+                  ov.category }} · {{ ov.year }}</span>
+                <h2
+                  style="margin:0;font-weight:400;font-size:clamp(40px,min(7vw,11vh),240px);line-height:0.95;letter-spacing:-0.03em;max-width:18ch;text-wrap:pretty">
+                  {{ ov.title }}</h2>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+        <button onClick="{{ closeOv }}" aria-label="Close project"
+          style="position:absolute;top:clamp(12px,2.2vh,48px);right:clamp(12px,3vw,96px);z-index:2;width:clamp(56px,4.2vw,140px);height:clamp(56px,4.2vw,140px);padding:0;border:0;background:transparent;color:#f3f5f7;cursor:pointer;transition:color .4s ease,transform .6s cubic-bezier(.65,0,.35,1)"
+          style-hover="color:#14d6c4;transform:rotate(90deg)">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"
+            style="width:100%;height:100%;display:block" aria-hidden="true">
+            <path d="M6 6 L42 42 M42 6 L6 42" vector-effect="non-scaling-stroke" stroke-width="1.25"></path>
+          </svg>
+        </button>
+      </div>
+
+      <header ref="{{ headerRef }}"
+        style="transition:opacity .5s ease;position:fixed;top:0;left:0;right:0;z-index:20;display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:clamp(12px,1.25vw,48px);padding:clamp(10px,1.85vh,40px) clamp(16px,4vw,112px);background:linear-gradient(#0b0d10 40%,rgba(11,13,16,0));font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase">
+        <a href="#prologue" onClick="{{ toHero }}"
+          style="justify-self:start;font-weight:700;letter-spacing:0.14em;color:#f3f5f7;padding:10px 0;transition:color .25s"
+          style-hover="color:#14d6c4">Udi Waizer</a>
+        <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;align-items:center;gap:clamp(12px,1.25vw,48px)"><span aria-hidden="true"
+              style="width:1px;height:1.2em;background:#5a626c"></span>
+            <nav style="display:flex;justify-content:flex-start;gap:clamp(14px,1.67vw,64px);flex-wrap:wrap">
+              <sc-for list="{{ nav }}" as="n" hint-placeholder-count="2">
+                <a href="{{ n.href }}"
+                  style="display:flex;gap:8px;align-items:baseline;color:{{ n.color }};transition:color .25s"
+                  style-hover="color:#14d6c4">
+                  <span>{{ n.label }}</span>
+                </a>
+              </sc-for>
+            </nav>
+          </div>
+        </sc-if>
+        <div style="grid-column:3;justify-self:end;display:flex;align-items:center;gap:clamp(12px,1.22vw,40px)">
+          <a href="https://www.linkedin.com/in/udiwaizer/" target="_blank" rel="noopener" aria-label="LinkedIn"
+            style="display:grid;place-items:center;height:44px;color:#f3f5f7;transition:color .25s"
+            style-hover="color:#14d6c4">
+            <svg viewBox="0 0 24 24" style="width:clamp(14.4px,0.92vw,32px);height:clamp(14.4px,0.92vw,32px)"
+              fill="currentColor" aria-hidden="true">
+              <path
+                d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z">
+              </path>
+            </svg>
+          </a>
+          <a href="https://www.pinterest.com/udesign2/" target="_blank" rel="noopener" aria-label="Pinterest"
+            style="display:grid;place-items:center;height:44px;color:#f3f5f7;transition:color .25s"
+            style-hover="color:#14d6c4">
+            <svg viewBox="0 0 24 24" style="width:clamp(14.4px,0.92vw,32px);height:clamp(14.4px,0.92vw,32px)"
+              fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.09 3.17 9.44 7.64 11.18-.1-.95-.2-2.4.04-3.44.22-.93 1.4-5.93 1.4-5.93s-.36-.72-.36-1.78c0-1.66.97-2.91 2.17-2.91 1.02 0 1.52.77 1.52 1.69 0 1.03-.66 2.57-1 4-.28 1.19.6 2.17 1.78 2.17 2.13 0 3.77-2.25 3.77-5.49 0-2.87-2.06-4.88-5.01-4.88-3.41 0-5.41 2.56-5.41 5.2 0 1.03.4 2.13.89 2.73.1.12.11.22.08.34l-.33 1.36c-.05.22-.17.27-.4.16-1.5-.7-2.43-2.89-2.43-4.65 0-3.78 2.75-7.26 7.92-7.26 4.16 0 7.39 2.96 7.39 6.93 0 4.13-2.6 7.46-6.22 7.46-1.21 0-2.35-.63-2.74-1.38l-.75 2.85c-.27 1.04-1 2.35-1.49 3.15A12 12 0 0 0 24 12C24 5.37 18.63 0 12 0z">
+              </path>
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <div style="position:fixed;left:0;top:0;height:2px;width:100%;z-index:21;pointer-events:none">
+        <div ref="{{ progressRef }}"
+          style="height:2px;width:100%;background:#14d6c4;transform-origin:left;transform:scaleX(0)"></div>
+      </div>
+
+
+
+      <section id="about" data-screen-label="About" data-chapter="1"
+        style="padding:clamp(56px,14vh,320px) clamp(16px,4vw,112px);border-top:1px solid #1f242b;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(380px,19.8vw)),1fr));gap:clamp(40px,6vh,128px) clamp(40px,8vw,280px);align-items:start">
+        <div style="position:static" data-reveal="">
+          <h2
+            style="margin:0;font-weight:400;font-size:clamp(40px,min(8vw,11vh),240px);line-height:0.92;letter-spacing:-0.03em;white-space:nowrap">
+            …me <em>in a nutshell</em></h2>
+
+        </div>
+        <div data-reveal="" ref="{{ statsRef }}"
+          style="grid-column:1/-1;font-family:'IBM Plex Sans',sans-serif;display:grid;grid-template-columns:{{ statCols }};gap:clamp(12px,1vw,40px)">
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              YEARS</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                18+</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                Product Design Leadership</p>
+            </div>
+          </div>
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              LAUNCHED</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                21+</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                Successful Product Launches</p>
+            </div>
+          </div>
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              GROWTH STAGES</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                All</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                Seed, Series A-E, Corporate</p>
+            </div>
+          </div>
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              Stock Uptrend</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                45%</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                NASDAQ: VRNT (Two Year)</p>
+            </div>
+          </div>
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              Acquisitions</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                3</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                Powered by Design</p>
+            </div>
+          </div>
+          <div
+            style="min-width:0;min-height:clamp(220px,24vh,560px);box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;gap:clamp(24px,3vh,64px);container-type:inline-size;padding:clamp(16px,8%,48px);background:#111419;border-radius:clamp(12px,0.8vw,28px)">
+            <p
+              style="margin:0;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.12em;text-transform:uppercase;color:#9aa3ad;font-weight:500">
+              Total VC Funding</p>
+            <div style="display:flex;flex-direction:column;gap:clamp(6px,0.8vh,16px)">
+              <h3 data-roll=""
+                style="margin:0;font-weight:500;font-variant-numeric:tabular-nums;font-size:clamp(32px,22cqi,140px);line-height:0.95;letter-spacing:-0.02em;color:#14d6c4">
+                $510m</h3>
+              <p style="margin:0;font-size:clamp(16px,1.094vw,42px);line-height:1.35;color:#c9ced4;text-wrap:pretty">
+                Powered by Design</p>
+            </div>
+          </div>
+        </div>
+        <div ref="{{ stickyWrapRef }}" style="grid-column:1/-1;position:relative;height:300vh">
+          <div
+            style="position:sticky;top:0;height:100vh;box-sizing:border-box;padding:clamp(80px,12vh,220px) 0 clamp(24px,5vh,96px);display:grid;grid-template-columns:{{ stickyCols }};grid-template-rows:{{ stickyRows }};gap:clamp(20px,4vw,160px)">
+            <div style="position:relative;min-height:0">
+              <sc-for list="{{ stickyPanels }}" as="p" hint-placeholder-count="4">
+                <div ref="{{ p.ref }}"
+                  style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,2vh,40px);opacity:{{ p.op }};will-change:opacity,transform">
+                  <h3
+                    style="margin:0;font-family:'Caveat',cursive;font-weight:400;font-size:clamp(36px,min(4.4vw,8vh),160px);line-height:1;letter-spacing:-0.02em;color:#f3f5f7">
+                    my <em>{{ p.k }}</em></h3>
+                  <p
+                    style="margin:0;font-family:'IBM Plex Sans',sans-serif;font-size:clamp(15px,min(1.05vw,2.1vh),40px);line-height:1.55;color:#c9ced4;max-width:44ch;text-wrap:pretty">
+                    {{ p.v }}</p>
+                </div>
+              </sc-for>
+            </div>
+            <div
+              style="position:relative;min-height:0;align-self:center;justify-self:center;width:100%;max-height:100%;aspect-ratio:1600/1200;overflow:hidden;border-radius:clamp(12px,0.8vw,28px);background:#111419">
+              <sc-for list="{{ stickyPanels }}" as="p" hint-placeholder-count="4">
+                <div ref="{{ p.imgRef }}"
+                  style="position:absolute;inset:0;z-index:{{ p.z }};will-change:clip-path,transform">
+                  <img src="{{ p.img }}" alt="{{ p.alt }}"
+                    style="display:block;width:100%;height:100%;object-fit:cover">
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="journey" ref="{{ journeyRef }}" data-screen-label="My Journey"
+        style="position:relative;height:200vw;min-height:320vh;background:#FAF9F0;color:#000000;font-family:'IBM Plex Sans',sans-serif;--u:max(1vw,10px)">
+        <div
+          style="position:sticky;top:0;height:100vh;width:100%;overflow:hidden;padding-top:10vh;box-sizing:border-box;display:flex;align-items:center">
+          <div ref="{{ journeySliderRef }}"
+            style="display:flex;align-items:center;gap:calc(var(--u)*5);padding:0 calc(var(--u)*5);width:calc(var(--u)*240);height:min(calc(var(--u)*40),80vh);flex:none;will-change:transform">
+            <div style="height:100%;aspect-ratio:700/1050;flex:none;overflow:hidden;border-radius:calc(var(--u)*1)">
+              <img src="assets/me.jpg" alt="Udi Waizer" draggable="false"
+                style="display:block;width:100%;height:100%;object-fit:contain">
+            </div>
+            <div style="position:relative;height:100%;flex:1;min-width:0">
+              <div style="position:absolute;left:0;top:49%;width:100%;display:flex;align-items:center">
+                <div
+                  style="width:calc(var(--u)*.8);height:calc(var(--u)*.8);min-width:7px;min-height:7px;border-radius:50%;background:#ec6b55;flex:none">
+                </div>
+                <div ref="{{ journeyLineRef }}" style="height:2px;width:0%;background:#ec6b55"></div>
+                <div
+                  style="width:calc(var(--u)*.8);height:calc(var(--u)*.8);min-width:7px;min-height:7px;border-radius:50%;background:#ec6b55;flex:none">
+                </div>
+              </div>
+              <div style="display:flex;height:50%;width:100%;align-items:center;gap:calc(var(--u)*.5)">
+                <div
+                  style="height:100%;width:20%;flex:none;display:flex;align-items:flex-end;padding-bottom:clamp(8px,calc(var(--u)*1),32px);box-sizing:border-box">
+                  <h2
+                    style="margin:0;font-family:'Caveat',cursive;font-weight:400;font-size:max(32px,calc(var(--u)*3.6));line-height:0.95;white-space:nowrap">
+                    my JOURNEY</h2>
+                </div>
+                <div style="display:flex;height:100%;width:100%;column-gap:calc(var(--u)*15)">
+                  <sc-for list="{{ journeyTop }}" as="j" hint-placeholder-count="4">
+                    <div
+                      style="position:relative;height:100%;width:calc(var(--u)*30);flex:none;padding:0 calc(var(--u)*3);box-sizing:border-box">
+                      <div style="position:absolute;left:0;top:0;bottom:0;height:100%;width:100%">
+                        <div ref="{{ j.dot }}"
+                          style="width:calc(var(--u)*1);height:calc(var(--u)*1);min-width:8px;min-height:8px;border-radius:50%;background:#ec6b55;translate:-50% 0;transform:scale(0)">
+                        </div>
+                        <div ref="{{ j.line }}"
+                          style="height:94%;width:2px;background:#ec6b55;transform-origin:bottom;transform:scaleY(0)">
+                        </div>
+                      </div>
+                      <div
+                        style="margin-top:-calc(var(--u)*1);display:flex;flex-direction:column;gap:calc(var(--u)*0.7);max-height:calc(100% - calc(var(--u)*2));overflow:hidden">
+                        <img src="{{ j.logo }}" alt="{{ j.logoAlt }}"
+                          style="display:block;height:max(24px,calc(var(--u)*2.2));width:auto;max-width:max(96px,calc(var(--u)*9));object-fit:contain;object-position:left center">
+                        <h4
+                          style="margin:0;overflow:hidden;font-family:'IBM Plex Sans',sans-serif;font-weight:400;font-size:max(18px,calc(var(--u)*2.1));line-height:1.05">
+                          <span ref="{{ j.title }}" style="display:block;transform:translateY(105%)">{{ j.year }} {{
+                            j.month }}</span></h4>
+                        <p
+                          style="margin:0;overflow:hidden;width:90%;font-family:'IBM Plex Sans',sans-serif;font-size:max(13px,calc(var(--u)*1.25));line-height:1.2;color:#3f3f46">
+                          <span ref="{{ j.desc }}" style="display:block;transform:translateY(105%)">{{ j.content
+                            }}</span></p>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="display:flex;height:50%;width:100%;align-items:center">
+                <div style="height:100%;width:34%;flex:none;padding-top:calc(var(--u)*2);box-sizing:border-box">
+                  <p
+                    style="margin:0;font-family:'IBM Plex Sans',sans-serif;font-size:max(15px,calc(var(--u)*1.65));line-height:1;color:#3f3f46">
+                    2006 — 2026</p>
+                </div>
+                <div
+                  style="display:flex;height:100%;width:100%;column-gap:calc(var(--u)*20);margin-left:calc(var(--u)*7)">
+                  <sc-for list="{{ journeyBottom }}" as="j" hint-placeholder-count="3">
+                    <div
+                      style="position:relative;height:100%;width:calc(var(--u)*25);flex:none;padding:0 calc(var(--u)*3);box-sizing:border-box">
+                      <div style="position:absolute;left:0;bottom:-1%;height:100%;width:100%">
+                        <div ref="{{ j.line }}"
+                          style="height:94%;width:2px;background:#ec6b55;transform-origin:top;transform:scaleY(0)">
+                        </div>
+                        <div ref="{{ j.dot }}"
+                          style="width:calc(var(--u)*1);height:calc(var(--u)*1);min-width:8px;min-height:8px;border-radius:50%;background:#ec6b55;translate:-50% 0;transform:scale(0)">
+                        </div>
+                      </div>
+                      <div
+                        style="display:flex;height:100%;flex-direction:column;justify-content:flex-end;gap:calc(var(--u)*0.7);padding:calc(var(--u)*2) 0 calc(var(--u)*1.5);box-sizing:border-box;overflow:hidden">
+                        <img src="{{ j.logo }}" alt="{{ j.logoAlt }}"
+                          style="display:block;height:max(24px,calc(var(--u)*2.2));width:auto;max-width:max(96px,calc(var(--u)*9));object-fit:contain;object-position:left center">
+                        <h4
+                          style="margin:0;overflow:hidden;font-family:'IBM Plex Sans',sans-serif;font-weight:400;font-size:max(18px,calc(var(--u)*2.1));line-height:1.05">
+                          <span ref="{{ j.title }}" style="display:block;transform:translateY(105%)">{{ j.year }} {{
+                            j.month }}</span></h4>
+                        <p
+                          style="margin:0;overflow:hidden;width:90%;font-family:'IBM Plex Sans',sans-serif;font-size:max(13px,calc(var(--u)*1.25));line-height:1.2;color:#3f3f46">
+                          <span ref="{{ j.desc }}" style="display:block;transform:translateY(105%)">{{ j.content
+                            }}</span></p>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <sc-if value="{{ galOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="position:fixed;inset:0;z-index:60">
+          <div onClick="{{ galClose }}"
+            style="position:absolute;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);opacity:{{ galBg }};transition:opacity .35s ease">
+          </div>
+          <img src="{{ galSrc }}" alt="{{ galAlt }}" onClick="{{ galClose }}" draggable="false"
+            style="position:fixed;left:{{ galL }}px;top:{{ galT }}px;width:{{ galW }}px;height:{{ galH }}px;object-fit:cover;border-radius:clamp(10px,0.7vw,24px);box-shadow:0 30px 80px rgba(0,0,0,0.5);cursor:zoom-out;transition:left .45s cubic-bezier(.2,.8,.2,1),top .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1)">
+          <button type="button" onClick="{{ galClose }}" aria-label="Close gallery"
+            style="position:absolute;top:24px;right:24px;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;backdrop-filter:blur(8px);opacity:{{ galBg }};transition:opacity .3s ease,background .2s"
+            style-hover="background:rgba(255,255,255,0.2)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round">
+              <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      </sc-if>
+
+      <section id="work-grid" data-screen-label="Selected Work — Interactive" data-chapter="2"
+        style="padding:clamp(56px,14vh,320px) clamp(16px,4vw,112px);border-top:1px solid #1f242b">
+        <div
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(320px,16.7vw)),1fr));gap:clamp(20px,3vh,64px) clamp(32px,3.3vw,128px);align-items:end;margin-bottom:clamp(16px,4vh,96px)">
+          <div data-reveal="" data-parallax="0.14">
+            <h2
+              style="margin:0;font-weight:400;font-size:clamp(40px,min(8vw,11vh),240px);line-height:0.92;letter-spacing:-0.03em">
+              <i>Sharing is caring&nbsp;</i></h2>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(20px,3vh,56px)">
+          <div role="tablist" aria-label="More work"
+            style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:clamp(20px,3vh,56px)">
+            <sc-for list="{{ galTabs }}" as="t" hint-placeholder-count="3">
+              <button type="button" role="tab" aria-selected="{{ t.active }}" onClick="{{ t.pick }}"
+                style="border:0;border-radius:16px;padding:10px 16px;min-height:44px;font-family:'IBM Plex Sans',sans-serif;font-size:clamp(14px,0.9vw,32px);font-weight:{{ t.weight }};background:{{ t.bg }};color:{{ t.color }};cursor:pointer;transition:background .2s,color .2s"
+                style-hover="background:#1a1f26;color:#f3f5f7">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div style="min-width:0;display:{{ tabPostsDisp }};flex-direction:column;gap:clamp(16px,2.4vh,48px)">
+            <div style="display:grid;grid-template-columns:{{ vtCols }};gap:clamp(24px,4vw,140px);align-items:start">
+              <div style="display:flex;flex-direction:column;order:{{ vtListOrder }}">
+                <h3
+                  style="margin:0 0 clamp(12px,1.6vh,40px);font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(30px,2.6vw,96px);line-height:1;color:#14d6c4">
+                  LinkedIn Posts</h3>
+                <sc-for list="{{ vtItems }}" as="t" hint-placeholder-count="5">
+                  <button type="button" onClick="{{ t.pick }}"
+                    style="position:relative;display:flex;align-items:flex-start;gap:clamp(12px,1vw,32px);padding:clamp(14px,1.6vh,36px) 0 clamp(14px,1.6vh,36px) clamp(16px,1.2vw,40px);text-align:left;background:none;border:0;border-top:1px solid {{ t.border }};color:{{ t.color }};cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:color .5s"
+                    style-hover="color:#f3f5f7">
+                    <span style="position:absolute;left:0;top:0;bottom:0;width:2px;background:#232931;overflow:hidden">
+                      <sc-if value="{{ t.active }}" hint-placeholder-val="{{ false }}"><span
+                          style="position:absolute;left:0;top:0;width:100%;height:100%;background:#14d6c4;transform-origin:top;animation:vtProg 5s linear forwards;animation-play-state:{{ vtPlay }}"></span></sc-if>
+                    </span>
+                    <span
+                      style="font-size:clamp(11px,0.6vw,22px);font-variant-numeric:tabular-nums;opacity:0.5;margin-top:0.5em">/{{
+                      t.num }}</span>
+                    <span style="font-size:clamp(20px,1.7vw,64px);line-height:1.15;letter-spacing:-0.01em">{{ t.alt
+                      }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <div onMouseEnter="{{ vtPause }}" onMouseLeave="{{ vtResume }}"
+                style="position:relative;order:{{ vtImgOrder }};aspect-ratio:16/11;border-radius:clamp(20px,2vw,64px);overflow:hidden;background:#111419;border:1px solid #1f242b">
+                <sc-for list="{{ vtItems }}" as="t" hint-placeholder-count="1">
+                  <div onClick="{{ t.openImg }}"
+                    style="position:absolute;inset:0;cursor:{{ t.cursor }};opacity:{{ t.op }};transform:translateY({{ t.y }});z-index:{{ t.z }};pointer-events:{{ t.pe }};transition:transform .7s cubic-bezier(.2,.8,.2,1),opacity .4s ease">
+                    <img src="{{ t.src }}" alt="{{ t.alt }}"
+                      style="display:block;width:100%;height:100%;object-fit:cover">
+                  </div>
+                </sc-for>
+                <div
+                  style="position:absolute;right:clamp(16px,1.6vw,40px);bottom:clamp(16px,1.6vw,40px);display:flex;gap:10px;z-index:5">
+                  <button type="button" onClick="{{ vtPrev }}" aria-label="Previous"
+                    style="width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,0.15);background:rgba(11,13,16,0.75);backdrop-filter:blur(10px);color:#f3f5f7;cursor:pointer"
+                    style-active="transform:scale(0.9)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M15 18l-6-6 6-6"></path>
+                    </svg></button>
+                  <button type="button" onClick="{{ vtNext }}" aria-label="Next"
+                    style="width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,0.15);background:rgba(11,13,16,0.75);backdrop-filter:blur(10px);color:#f3f5f7;cursor:pointer"
+                    style-active="transform:scale(0.9)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M9 18l6-6-6-6"></path>
+                    </svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="min-width:0;display:{{ tabBooksDisp }};flex-direction:column;gap:clamp(16px,2.4vh,48px)">
+            <h3
+              style="margin:0 0 clamp(16px,2.4vh,48px);font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(30px,2.6vw,96px);line-height:1;color:#14d6c4">
+              Books I read (or listened to)</h3>
+            <div style="column-count:{{ galCols }};column-gap:clamp(8px,0.8vw,24px)">
+              <sc-for list="{{ galRight }}" as="g" hint-placeholder-count="6">
+                <button type="button" onClick="{{ g.open }}" aria-label="Open image"
+                  style="display:block;width:100%;padding:0;margin:0 0 clamp(8px,0.8vw,24px);border:0;background:#111419;border-radius:clamp(10px,0.7vw,24px);overflow:hidden;break-inside:avoid;cursor:pointer;opacity:{{ g.hide }};transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .25s"
+                  style-hover="transform:scale(0.98);filter:brightness(0.9)" style-active="transform:scale(0.95)">
+                  <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="display:block;width:100%;height:auto">
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+        <div data-reveal=""></div>
+      </section>
+
+      <section id="work-grid-2" data-screen-label="Selected Work — Interactive (copy)"
+        style="padding: clamp(56px,14vh,320px) clamp(16px,4vw,112px); border-top: 1px solid #1f242b; position: relative">
+        <div
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,max(320px,16.7vw)),1fr));gap:clamp(20px,3vh,64px) clamp(32px,3.3vw,128px);align-items:end;margin-bottom:clamp(32px,8vh,192px)">
+          <div data-reveal="" data-parallax="0.14">
+            <h2
+              style="margin:0;font-weight:400;font-size:clamp(40px,min(8vw,11vh),240px);line-height:0.92;letter-spacing:-0.03em">
+              Selected work<br><em></em></h2>
+          </div>
+        </div>
+        <div data-reveal="">
+          <div onMouseLeave="{{ frameLeave }}"
+            style="display:grid;grid-template-columns:{{ frameCols }};grid-template-rows:{{ frameRows }};gap:clamp(4px,0.3vw,12px);height:{{ frameH }};transition:grid-template-rows 1.1s cubic-bezier(.65,0,.35,1),grid-template-columns 1.1s cubic-bezier(.65,0,.35,1)">
+            <sc-for list="{{ frames }}" as="f" hint-placeholder-count="4">
+              <a href="{{ f.href }}" onClick="{{ f.open }}" onMouseEnter="{{ f.enter }}"
+                style="position:relative;display:block;overflow:hidden;background:#111419;border:1px solid #1f242b;color:#f3f5f7;min-width:0;min-height:0;transition:border-color .35s"
+                style-hover="border-color:#14d6c4">
+                <sc-if value="{{ f.isImg }}" hint-placeholder-val="{{ false }}"><img src="{{ f.img }}"
+                    alt="{{ f.title }}"
+                    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ f.mediaOpacity }};transform:scale({{ f.scale }});transition:opacity 1.1s cubic-bezier(.65,0,.35,1),transform 1.6s cubic-bezier(.65,0,.35,1)"></sc-if>
+                <sc-if value="{{ f.isVideo }}" hint-placeholder-val="{{ false }}"><video src="{{ f.video }}"
+                    muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata"
+                    style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:{{ f.mediaOpacity }};transform:scale({{ f.scale }});transition:opacity 1.1s cubic-bezier(.65,0,.35,1),transform 1.6s cubic-bezier(.65,0,.35,1)"></video></sc-if>
+
+                <div
+                  style="position:absolute;left:clamp(12px,1vw,32px);right:clamp(12px,1vw,32px);bottom:clamp(12px,1vw,32px);display:flex;flex-direction:column;gap:6px">
+                  <h3
+                    style="margin:0;font-weight:500;font-size:clamp(20px,1.563vw,60px);line-height:1.05;letter-spacing:-0.01em">
+                    {{ f.title }}</h3>
+                  <span
+                    style="font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.1em;text-transform:uppercase;color:{{ f.metaColor }};transition:color .8s ease">{{
+                    f.category }} · {{ f.year }}</span>
+                </div>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+        <div data-reveal="" style="margin-top:clamp(40px,8vh,192px)">
+          <div style="min-width:0;display:flex;flex-direction:column;gap:clamp(16px,2.4vh,48px)">
+            <h3
+              style="margin:0 0 clamp(16px,2.4vh,48px);font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:clamp(30px,2.6vw,96px);line-height:1;color:#14d6c4">
+              <i>Shelved, not forgotten</i><br><span
+                style="display:block;margin-top:12px;font-family:'IBM Plex Sans',sans-serif;font-size:clamp(18px,calc(0.9vw + 10px),36px);line-height:1.3;color:#ffffff;text-wrap:pretty">Projects
+                and POCs that never went live, but inspired live products</span></h3>
+            <div style="column-count:{{ galCols }};column-gap:clamp(8px,0.8vw,24px)">
+              <sc-for list="{{ galShelf2 }}" as="g" hint-placeholder-count="6">
+                <button type="button" onClick="{{ g.open }}" aria-label="Open image"
+                  style="display:block;width:100%;padding:0;margin:0 0 clamp(8px,0.8vw,24px);border:0;background:#111419;border-radius:clamp(10px,0.7vw,24px);overflow:hidden;break-inside:avoid;cursor:pointer;opacity:{{ g.hide }};transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .25s"
+                  style-hover="transform:scale(0.98);filter:brightness(0.9)" style-active="transform:scale(0.95)">
+                  <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="display:block;width:100%;height:auto">
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" data-screen-label="Footer"
+        style="padding:clamp(40px,8vh,160px) clamp(16px,4vw,112px) clamp(20px,3.7vh,80px);box-sizing:border-box">
+        <footer
+          style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;border-top:1px solid #1f242b;padding-top:24px;font-family:'IBM Plex Mono',monospace;font-size:clamp(13px,0.677vw,26px);letter-spacing:0.14em;text-transform:uppercase;color:#9aa3ad">
+
+          <span>© 2026 Udi Waizer</span>
+        </footer>
+      </section>
+    </div>
+  </x-dc>
+  <script type="text/x-dc" data-dc-script
+    data-props="{&quot;photographer&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Rich Vintage&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;animateReveals&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { active: 0, vw: typeof innerWidth === 'number' ? innerWidth : 1920, vh: typeof innerHeight === 'number' ? innerHeight : 1080 };
+  progressRef = React.createRef();
+  dialRef = React.createRef();
+  handRef = React.createRef();
+
+  introRef = React.createRef(); headerRef = React.createRef(); cueRef = React.createRef(); fadeRef = React.createRef();
+  statsRef = React.createRef();
+  stickyWrapRef = React.createRef();
+  journeyRef = React.createRef(); journeySliderRef = React.createRef(); journeyLineRef = React.createRef();
+  journeyItems = [
+    { id: 'a', top: true, co: 'SAP', year: '2006', month: 'March', content: 'Joined SAP as a UI/UX designer and climbed from portal pixels to global design leadership' },
+    { id: 'b', top: false, co: 'Verint', year: '2012', month: 'October', content: 'Took the global design helm at Verint, where a dashboard redesign lifted adoption and the stock followed' },
+    { id: 'c', top: true, co: '2014', year: '2014', month: 'December', content: 'Turned a wall of IT data into a single-pane root-cause dashboard powered by ML' },
+    { id: 'd', top: false, co: '2016', year: '2016', month: 'September', content: 'Rebuilt an ML-powered marketing platform with a modular design system and smarter onboarding' },
+    { id: 'e', top: true, co: 'Zepl', year: '2018', month: 'December', content: 'Took an open-source tool to an enterprise AI platform at Zepl, later acquired by DataRobot' },
+    { id: 'f', top: false, co: 'Socure', year: '2021', month: 'February', content: "Founded Socure's design team and scaled an AI identity platform through a $450M Series E" },
+    { id: 'g', top: true, co: 'MARA', year: '2025', month: 'September', content: "Leading design and strategy for MARA's new AI-cloud venture, where SaaS, and applied-AI experience converge at the infrastructure layer" },
+  ].map(x => ({ ...x, logo: {a:'assets/logo-a.png',b:'assets/logo-b.png',c:'assets/logo-c.png',d:'assets/logo-d.png',e:'assets/logo-e.png',f:'assets/logo-f.png',g:'assets/logo-g.png'}[x.id], logoAlt: {"a":"SAP","b":"Verint","c":"CA Technologies","d":"Folloze","e":"Zepl","f":"Socure","g":"MARA"}[x.id] + ' logo', dot: React.createRef(), line: React.createRef(), title: React.createRef(), desc: React.createRef() }));
+  stickyRefs = [0, 1, 2].map(() => React.createRef());
+  stickyImgRefs = [0, 1, 2].map(() => React.createRef());
+  panRef = React.createRef(); curtainRef = React.createRef(); stageRef = React.createRef();
+  lateRef = React.createRef();
+  heroBgRef = React.createRef(); heroFgRef = React.createRef(); heroFadeRef = React.createRef();
+  parallax() {
+    if (this.reduced) return;
+    const vh = innerHeight, intro = this.introRef.current;
+    if (intro) {
+      // hero leaves the viewport: layers lag at different rates (deepest = slowest)
+      const q = Math.min(1, Math.max(0, (scrollY - (intro.offsetTop + intro.offsetHeight - vh)) / vh));
+      if (this.heroBgRef.current) this.heroBgRef.current.style.translate = `0 ${(q * vh * 0.7).toFixed(1)}px`;
+      if (this.heroFgRef.current) this.heroFgRef.current.style.translate = `0 ${(q * vh * 0.4).toFixed(1)}px`;
+      if (this.heroFadeRef.current) this.heroFadeRef.current.style.opacity = Math.min(1, q * 1.6).toFixed(3);
+    }
+    const k = innerWidth < 900 ? 0.5 : 1;
+    document.querySelectorAll('[data-parallax]').forEach(el => {
+      const s = parseFloat(el.dataset.parallax) || 0;
+      const cur = parseFloat(el.dataset.ty || '0');
+      const r = el.getBoundingClientRect();
+      const mid = r.top - cur + r.height / 2;
+      if (mid < -vh || mid > vh * 2) return;
+      const ty = (mid - vh / 2) * s * k;
+      el.dataset.ty = ty.toFixed(1);
+      el.style.translate = `0 ${ty.toFixed(1)}px`;
+    });
+  }
+  lineRefs = [0, 1, 2, 3].map(() => React.createRef());
+
+  intro() {
+    const el = this.introRef.current;
+    if (!el) return;
+    const span = Math.max(1, el.offsetHeight - innerHeight);
+    const p = Math.min(1, Math.max(0, (scrollY - el.offsetTop) / span));
+    const cl = x => Math.min(1, Math.max(0, x));
+    const ramp = (a, b) => cl((p - a) / (b - a));
+    const ease = t => t * t * (3 - 2 * t);
+    const img = this.panRef.current;
+    if (img) {
+      const over = Math.max(0, img.offsetWidth - innerWidth);
+      const y = (img.offsetHeight - innerHeight) / 2;
+      img.style.transform = `translate3d(${(-p * over).toFixed(1)}px,${(-y).toFixed(1)}px,0)`;
+    }
+    const ranges = [[0.0, 0.024, 0.142, 0.189], [0.213, 0.252, 0.355, 0.402], [0.425, 0.465, 0.559, 0.606], [0.63, 0.67, 0.97, 1.2]];
+    this.lineRefs.forEach((r, i) => {
+      if (!r.current) return;
+      const [a, b, c, d] = ranges[i];
+      const o = i === 0 && p < b ? 1 : Math.min(ramp(a, b), 1 - ramp(c, d));
+      const y = (1 - ramp(a, b)) * 24 - ramp(c, d) * 24;
+      r.current.style.opacity = o.toFixed(3);
+      r.current.style.transform = `translateY(${(i === 0 && p < b ? 0 : y).toFixed(1)}px)`;
+    });
+    if (this.lateRef.current) {
+      const t = ease(ramp(0.7, 0.74));
+      this.lateRef.current.style.opacity = t.toFixed(3);
+      this.lateRef.current.style.transform = `translateY(${((1 - t) * 18).toFixed(1)}px)`;
+    }
+    if (this.cueRef.current) this.cueRef.current.style.opacity = (1 - ramp(0.02, 0.08)).toFixed(3);
+    if (this.stageRef.current) this.stageRef.current.style.opacity = (1 - ease(ramp(0.92, 0.99))).toFixed(3);
+    const past = p >= 0.985;
+    if (this.headerRef.current) {
+      this.headerRef.current.style.opacity = past ? '1' : '0';
+      this.headerRef.current.style.pointerEvents = past ? 'auto' : 'none';
+    }
+    if (past !== this.state.past) this.setState({ past });
+    const ready = p >= 0.08;
+    if (ready !== this.state.ready) this.setState({ ready });
+  }
+
+  openOv(i) {
+    clearTimeout(this.ovT);
+    this.setState({ ovIdx: i, ovOpen: true });
+    document.documentElement.style.overflow = 'hidden';
+    document.querySelectorAll('#work-grid video').forEach(v => v.pause());
+  }
+  closeOv() {
+    if (!this.state.ovOpen) return;
+    this.setState({ ovOpen: false });
+    document.documentElement.style.overflow = '';
+    const w = document.getElementById('work-grid');
+    if (w) window.scrollTo({ top: w.getBoundingClientRect().top + scrollY, behavior: 'instant' });
+    this.ovT = setTimeout(() => this.setState({ ovIdx: null }), 950);
+  }
+
+  initRoll() {
+    const root = this.statsRef.current; if (!root || !('IntersectionObserver' in window)) return;
+    const run = () => {
+      root.querySelectorAll('h3[data-roll]').forEach((el, k) => {
+        const txt = el.textContent; if (!txt) return;
+        const base = 'display:inline-block;vertical-align:top;height:1em;line-height:1em;overflow:hidden';
+        el.textContent = '';
+        const parts = [];
+        [...txt].forEach((ch, i) => {
+          const d = parseInt(ch, 10), delay = k * 90 + i * 70;
+          const w = document.createElement('span'); w.style.cssText = base;
+          const inner = document.createElement('span');
+          if (!isNaN(d)) {
+            inner.style.cssText = 'display:block;transform:translateY(0);transition:transform 1.5s cubic-bezier(.16,1,.3,1) ' + delay + 'ms';
+            for (let n = 0; n < 20; n++) { const s = document.createElement('span'); s.style.cssText = 'display:block;height:1em'; s.textContent = n % 10; inner.appendChild(s); }
+            parts.push(() => { inner.style.transform = 'translateY(' + -(10 + d) + 'em)'; });
+          } else {
+            inner.style.cssText = 'display:block;opacity:0;transform:translateY(0.6em);transition:opacity .6s ease ' + (delay + 300) + 'ms,transform .9s cubic-bezier(.16,1,.3,1) ' + (delay + 300) + 'ms';
+            inner.textContent = ch === ' ' ? '\u00a0' : ch;
+            parts.push(() => { inner.style.opacity = '1'; inner.style.transform = 'none'; });
+          }
+          w.appendChild(inner); el.appendChild(w);
+        });
+        void el.offsetWidth;
+        requestAnimationFrame(() => parts.forEach(f => f()));
+        setTimeout(() => { el.textContent = txt; }, 1500 + k * 90 + txt.length * 70 + 200);
+      });
+    };
+    this.rollIO = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { this.rollIO.disconnect(); run(); } }, { threshold: 0.35 });
+    this.rollIO.observe(root);
+  }
+
+
+  updateJourney() {
+    const sec = this.journeyRef.current; if (!sec) return;
+    const r = sec.getBoundingClientRect(), vh = innerHeight, H = r.height, top = r.top;
+    const cl = v => Math.min(1, Math.max(0, v));
+    const mob = innerWidth < 600;
+    const slideEndTop = vh - (mob ? 0.82 : 0.92) * H;
+    const sp = cl(-top / Math.max(1, -slideEndTop));
+    const sl = this.journeySliderRef.current;
+    if (sl) sl.style.transform = 'translateX(' + (-sp * Math.max(0, sl.offsetWidth - 0.84 * innerWidth)).toFixed(1) + 'px)';
+    const lineStartTop = vh * (mob ? 0.3 : 0.25);
+    const lp = cl((lineStartTop - top) / Math.max(1, lineStartTop - slideEndTop));
+    if (this.journeyLineRef.current) this.journeyLineRef.current.style.width = (lp * 98).toFixed(2) + '%';
+    const pos = mob ? [[22,32],[28,38],[36,46],[45,55],[52,62],[60,70],[69,79]] : [[6,26],[16,36],[26,46],[35,55],[45,65],[55,75],[65,85]];
+    const ease = t => 1 - Math.pow(1 - t, 2);
+    this.journeyItems.forEach((it, i) => {
+      const [s, e] = pos[i];
+      const st = 0.3 * vh - s / 100 * H, en = 0.5 * vh - e / 100 * H;
+      let t = cl((st - top) / Math.max(1, st - en));
+      if (mob && it.dot.current) { const L = it.dot.current.parentNode.getBoundingClientRect().left; t = cl((innerWidth * 0.9 - L) / (innerWidth * 0.55)); }
+      const a = cl(t / 0.4), b = ease(cl((t - 0.1) / 0.6)), c = ease(cl((t - 0.2) / 0.6));
+      if (it.line.current) it.line.current.style.transform = 'scaleY(' + a.toFixed(3) + ')';
+      if (it.dot.current) it.dot.current.style.transform = 'scale(' + a.toFixed(3) + ')';
+      if (it.title.current) it.title.current.style.transform = 'translateY(' + ((1 - b) * 105).toFixed(2) + '%)';
+      if (it.desc.current) it.desc.current.style.transform = 'translateY(' + ((1 - c) * 105).toFixed(2) + '%)';
+    });
+  }
+  updateSticky() {
+    const w = this.stickyWrapRef.current; if (!w) return;
+    const r = w.getBoundingClientRect(), vh = innerHeight, n = 3;
+    const span = Math.max(1, r.height - vh);
+    const p = Math.min(1, Math.max(0, -r.top / span)) * (n - 1);
+    const sm = t => t * t * (3 - 2 * t);
+    this.stickyRefs.forEach((ref, i) => {
+      const el = ref.current; if (!el) return;
+      const d = p - i;
+      const out = sm(Math.min(1, Math.max(0, (d - 0.05) / 0.35)));
+      const inn = sm(Math.min(1, Math.max(0, (d + 0.55) / 0.35)));
+      const op = i === 0 ? 1 - out : i === n - 1 ? inn : Math.min(inn, 1 - out);
+      el.style.opacity = op.toFixed(3);
+      el.style.transform = 'translateY(' + ((1 - inn) * 3 - out * 3).toFixed(2) + '%)';
+      el.style.pointerEvents = op > 0.5 ? 'auto' : 'none';
+    });
+    this.stickyImgRefs.forEach((ref, i) => {
+      const el = ref.current; if (!el) return;
+      const d = p - i, exit = Math.min(1, Math.max(0, d)), enter = Math.min(1, Math.max(0, d + 1));
+      el.style.clipPath = 'inset(0% 0% ' + (exit * 100).toFixed(2) + '% 0%)';
+      const sc = i === 0 ? 1.2 - exit * 0.2 : d < 0 ? 1.5 - enter * 0.3 : 1.2 - exit * 0.2;
+      el.style.transform = 'scale(' + sc.toFixed(4) + ')';
+    });
+  }
+
+  galImages = ["https://cdn.21st.dev/assets/mirror/80/80494ef454ff9a2fe026aa0312f355a273483a486f895570ff793ce5356b4abe.webp","https://cdn.21st.dev/assets/mirror/4f/4f0bb0ca11b70554ffaf2c82c8773b7c7b7c52e0d0267401f59c2dcac16952f0.jpg","https://cdn.21st.dev/assets/mirror/bb/bbec5c06a0146890a122307c9e5e791cf4cd07f73602b3dc630d08ed519be1c3.jpg","https://cdn.21st.dev/assets/mirror/e2/e29225e73e6dbe6c6f8cec2806a669e786e74aa9e4ada0c00b546234f230d5ed.webp","https://cdn.21st.dev/assets/mirror/e6/e6f485b1032af96ea11fbfc8f8c7f995152df6a00c1ad0677586298fbab7324f.jpg","https://cdn.21st.dev/assets/mirror/aa/aa240283d3ed9e7b982370191092928e70e54c350e0c66926d96b6d834296b8b.webp","https://cdn.21st.dev/assets/mirror/c6/c61c22d5bb029bbdd6f364575a5bd7c8b03e3b193e3f04d53c36bfd25fae0801.jpg","https://cdn.21st.dev/assets/mirror/8b/8b86448dbaf666b17fabb7ab642ee761be9c06ab48a10b55e5270beac537e617.jpg","https://cdn.21st.dev/assets/mirror/d8/d861295f84e4816a7f8cf3acfac326c5f5eedb050c876f448ee8281655d144ba.jpg","https://cdn.21st.dev/assets/mirror/e1/e11c5aeebba2e20efde848a13fcef3ffc6c344fae45a34d38d85b2261d6c1268.jpg","https://cdn.21st.dev/assets/mirror/d8/d817868dc56b92849b43c75e8e210b9b09744cfeea774525c6fcd49b55a77658.webp","https://cdn.21st.dev/assets/mirror/ed/ed5e362d625a205bc2d85af3653e44cb814e44153e997fd2d54a06ab0ede1395.webp"];
+  openGal(e, src, alt, key) {
+    const btn = e.currentTarget, img = btn.querySelector('img'); if (!img) return;
+    const r = img.getBoundingClientRect();
+    const nw = img.naturalWidth || r.width, nh = img.naturalHeight || r.height;
+    const s = Math.min(innerWidth * 0.95 / nw, innerHeight * 0.9 / nh);
+    const w = nw * s, hh = nh * s;
+    this.galFrom = { l: r.left, t: r.top, w: r.width, h: r.height }; this.galBtn = btn;
+    document.body.style.overflow = 'hidden';
+    this.setState({ gal: { src, alt, key, ...this.galFrom, bg: 0 } }, () => {
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gal: { src, alt, key, l: (innerWidth - w) / 2, t: (innerHeight - hh) / 2, w, h: hh, bg: 1 } })));
+    });
+  }
+  closeGal() {
+    const g = this.state.gal; if (!g || g.closing) return;
+    const r = this.galBtn && this.galBtn.querySelector('img') ? this.galBtn.querySelector('img').getBoundingClientRect() : null;
+    const f = r ? { l: r.left, t: r.top, w: r.width, h: r.height } : this.galFrom;
+    this.setState({ gal: { ...g, ...f, bg: 0, closing: true } });
+    clearTimeout(this.galT); this.galT = setTimeout(() => { this.setState({ gal: null }); document.body.style.overflow = ''; }, 460);
+  }
+  bentoRef = React.createRef();
+  bentoDown(e) {
+    const el = this.bentoRef.current; if (!el || e.button !== 0 || e.pointerType === 'touch') return;
+    const x0 = e.clientX, s0 = el.scrollLeft; this.bentoMoved = false; el.style.cursor = 'grabbing';
+    const mv = ev => { const dx = ev.clientX - x0; if (Math.abs(dx) > 4) this.bentoMoved = true; el.scrollLeft = s0 - dx; };
+    const up = () => { el.style.cursor = 'grab'; removeEventListener('pointermove', mv); removeEventListener('pointerup', up); setTimeout(() => { this.bentoMoved = false; }, 0); };
+    addEventListener('pointermove', mv); addEventListener('pointerup', up);
+  }
+  vtSet(i) { this.setState({ vtIdx: i }); if (!this.state.vtPaused) this.vtStart(); }
+  vtGo(d) { const n = this.galLeftList().length; this.vtSet(((this.state.vtIdx || 0) + d + n) % n); }
+  vtStart() { clearInterval(this.vtT); this.vtT = setInterval(() => { if (!this.state.gal) this.vtGo(1); }, 5000); }
+  vtStop() { clearInterval(this.vtT); }
+  galLeftList() {
+    return [["assets/post-2.jpg","Draw me a sheep","https://lnkd.in/p/gxqWDvCc"],["assets/post-3.png","The cost of 'Being First' strategies","https://www.linkedin.com/pulse/ai-first-mobile-first-strategies-weve-been-here-before-udi-waizer-thv0c"],["assets/post-4.jpg","The Ephemeral Experience","https://www.linkedin.com/pulse/ui-should-designed-respond-udi-waizer-nh3oc/"],["assets/post-5.jpg","Embrace your inner multitool !","https://lnkd.in/p/g2cP5qxH"],["assets/post-6.jpg","Oldest UI Component","https://lnkd.in/p/gNasCVb6"]].map(([src, alt, link], i) => { const key = 'L' + i; return { src, alt, link, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
+  }
+  galShelfList() {
+    return ["Folloze nSight","Lastline network events","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP Store","SAP patient records","Smart City","Social app 1","Social app 2","Social app 3","Verint scorecard","Verint score cards","Verint persona","Z-meet"].map((alt, i) => { const src = ['assets/shelf-01.jpg','assets/shelf-02.jpg','assets/shelf-03.jpg','assets/shelf-04.jpg','assets/shelf-05.jpg','assets/shelf-06.jpg','assets/shelf-07.jpg','assets/shelf-08.jpg','assets/shelf-09.jpg','assets/shelf-10.jpg','assets/shelf-11.jpg','assets/shelf-12.jpg','assets/shelf-13.jpg','assets/shelf-14.jpg','assets/shelf-15.jpg'][i], key = 'S' + i; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
+  }
+  componentDidMount() {
+    this.vtStart();
+    this.onGalKey = e => { if (e.key === 'Escape') this.closeGal(); };
+    addEventListener('keydown', this.onGalKey);
+    this.onStickyScroll = () => { if (!this.stickyTick) { this.stickyTick = requestAnimationFrame(() => { this.stickyTick = null; this.updateSticky(); }); } };
+    addEventListener('scroll', this.onStickyScroll, { passive: true }); addEventListener('resize', this.onStickyScroll);
+    this.onJourneyScroll = () => { if (!this.journeyTick) { this.journeyTick = requestAnimationFrame(() => { this.journeyTick = null; try { this.updateJourney(); } catch (e) { console.error(e); } }); } };
+    addEventListener('scroll', this.onJourneyScroll, { passive: true }); addEventListener('resize', this.onJourneyScroll);
+    try { this.updateSticky(); } catch (e) { console.error(e); }
+    this.onJourneyScroll();
+    this.initRoll();
+    this.onKey = e => { if (e.key === 'Escape') this.closeOv(); };
+    addEventListener('keydown', this.onKey);
+    this.onMsg = e => { if (e.data && e.data.type === 'close-project') this.closeOv(); };
+    addEventListener('message', this.onMsg);
+    if (location.hash === '#work-grid') {
+      const go = () => { const w = document.getElementById('work-grid'); if (w) window.scrollTo({ top: w.getBoundingClientRect().top + scrollY, behavior: 'instant' }); };
+      requestAnimationFrame(go); setTimeout(go, 300);
+    }
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.onScroll = () => {
+      this.intro();
+      this.parallax();
+      const h = document.documentElement;
+      const max = Math.max(1, h.scrollHeight - innerHeight);
+      const p = scrollY / max;
+      if (this.progressRef.current) this.progressRef.current.style.transform = `scaleX(${p})`;
+      if (this.dialRef.current) this.dialRef.current.style.transform = `rotate(${scrollY * 0.06}deg)`;
+      if (this.handRef.current) this.handRef.current.style.transform = `rotate(${180 + p * 360}deg)`;
+      let active = 0;
+      document.querySelectorAll('[data-chapter]').forEach(s => {
+        if (s.getBoundingClientRect().top < innerHeight * 0.45) active = +s.dataset.chapter;
+      });
+      if (active !== this.state.active) this.setState({ active });
+    };
+    addEventListener('scroll', this.onScroll, { passive: true });
+    this.onResize = () => { this.setState({ vw: innerWidth, vh: innerHeight }); this.onScroll(); };
+    addEventListener('resize', this.onResize);
+    this.onScroll();
+    this.setupReveals();
+  }
+  componentDidUpdate() { this.setupReveals(); }
+  componentWillUnmount() {
+    clearInterval(this.vtT);
+    removeEventListener('keydown', this.onGalKey); clearTimeout(this.galT);
+    removeEventListener('scroll', this.onStickyScroll); removeEventListener('resize', this.onStickyScroll);
+    removeEventListener('scroll', this.onJourneyScroll); removeEventListener('resize', this.onJourneyScroll);
+    this.rollIO && this.rollIO.disconnect();
+    removeEventListener('scroll', this.onScroll);
+    removeEventListener('resize', this.onResize);
+    removeEventListener('keydown', this.onKey);
+    clearTimeout(this.skipTimer);
+    this.io && this.io.disconnect();
+  }
+  setupReveals() {
+    if (this.props.animateReveals === false) return;
+    if (!this.io) {
+      this.io = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          this.io.unobserve(e.target);
+        }
+      }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    }
+    document.querySelectorAll('[data-reveal]:not([data-rv])').forEach((el, i) => {
+      el.setAttribute('data-rv', '');
+      if (el.getBoundingClientRect().top < innerHeight) {
+        el.style.transition = 'opacity 1.1s ease, transform 1.1s cubic-bezier(.2,.7,.2,1)';
+        el.style.transitionDelay = `${(i % 5) * 90}ms`;
+      } else {
+        el.style.transition = 'opacity 1s ease, transform 1s cubic-bezier(.2,.7,.2,1)';
+      }
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      requestAnimationFrame(() => this.io.observe(el));
+    });
+  }
+
+  renderVals() {
+    const mobF = this.state.vw < 640, cols = mobF ? 1 : 2, rows = mobF ? 4 : 2;
+    const hv = this.state.hov;
+    const tracks = (n, sel) => Array.from({ length: n }, (_, i) => hv == null ? '1fr' : i === sel ? '1.6fr' : '0.95fr').join(' ');
+    const frameSrc = [
+      { title: 'Socure — Know Your Customer', category: 'Identity platform', year: '2021 - 2024', img: 'uploads/socurel-h.jpg', href: 'socure.html', page: 'socure.html?overlay=1' },
+      { title: 'Zepl (acquired by DataRobot)', category: 'AI/ML Data-Science platform', year: '2018 - 2021', img: 'uploads/zepl-h.jpg', href: 'zepl.html', page: 'zepl.html?overlay=1' },
+      { title: 'Folloze', category: 'AI-Powered Lead Signals', year: '2016 - 2018', img: 'uploads/folloze-h.jpg', href: 'folloze.html', page: 'folloze.html?overlay=1' },
+      { title: 'XTEND', category: 'Autonomous AI Piloting', year: '2019 - 2021', img: 'uploads/xtend-h.png', href: 'xtend.html', page: 'xtend.html?overlay=1' },
+    ];
+    const frames = frameSrc.map((f, i) => {
+      const on = hv === i;
+      return { ...f, num: String(i + 1).padStart(2, '0'), href: f.href || '#work-grid', isImg: !!f.img, isVideo: !!f.video,
+        mediaOpacity: hv == null ? 0.72 : on ? 1 : 0.5, scale: on ? 1.025 : 1, metaColor: on ? '#14d6c4' : '#9aa3ad',
+        open: e => { e.preventDefault(); this.openOv(i); },
+        enter: e => {
+          const el = e.currentTarget;
+          clearTimeout(this.hovT);
+          this.hovT = setTimeout(() => {
+            this.setState({ hov: i });
+            document.querySelectorAll('#work-grid video').forEach(v => v.pause());
+            const v = el.querySelector('video'); if (v) v.play().catch(() => {});
+          }, this.state.hov == null ? 120 : 260);
+        } };
+    });
+    const labels = [['1', 'About', '#about'], ['2', 'Work', '#work-grid']];
+    const projects = [
+      { title: 'Northlight', client: 'Halden Energy', category: 'Brand film', year: '2026', media: 'brand film still' },
+      { title: 'Quiet Ledger', client: 'Tally', category: 'UI animation', year: '2025', media: 'product UI loop' },
+      { title: 'Afterhours', client: 'Studio Ferro', category: 'Title sequence', year: '2025', media: 'title frame' },
+      { title: 'Orbit Kit', client: 'Parallel Labs', category: 'Motion system', year: '2024', media: 'motion system sheet' },
+      { title: 'Second Nature', client: 'Moss & Co.', category: 'Launch film', year: '2023', media: 'launch film still' },
+      { title: 'Signal', client: 'Wren Agency', category: 'Interactive', year: '2022', media: 'interactive capture' },
+    ].map((p, i) => ({ ...p, speed: [0, 0.07, 0.035][i % 3], num: String(i + 1).padStart(2, '0'), offset: i % 3 === 1 ? 'clamp(0px,4vw,64px)' : '0px' }));
+    return {
+      nav: labels.map(([num, label, href]) => ({ label, href, color: +num === Math.min(this.state.active, 2) ? '#14d6c4' : '#f3f5f7' })),
+      projects,
+      frames,
+      statCols: `repeat(${this.state.vw >= 1200 ? 6 : this.state.vw >= 640 ? 3 : 2},minmax(0,1fr))`,
+      statsRef: this.statsRef,
+      galCols: this.state.vw >= 1200 ? 4 : this.state.vw >= 640 ? 3 : 2,
+      galTabs: [['Shared thoughts', 0], ['Books I love', 2]].map(([label, i]) => { const on = (this.state.galTab || 0) === i; return { label, active: on ? 'true' : 'false', bg: on ? '#1a1f26' : 'transparent', color: on ? '#f3f5f7' : '#9aa3ad', weight: on ? 500 : 400, pick: () => this.setState({ galTab: i }) }; }),
+      tabPostsDisp: (this.state.galTab || 0) === 0 ? 'flex' : 'none',
+      galShelfCols: (() => { const n = this.state.vw >= 1200 ? 4 : this.state.vw >= 640 ? 3 : 2, cols = Array.from({ length: n }, () => ({ items: [] })); this.galShelfList().forEach((g, i) => cols[i % n].items.push(g)); return cols; })(),
+      vtCols: this.state.vw >= 1000 ? '5fr 7fr' : 'minmax(0,1fr)', vtListOrder: this.state.vw >= 1000 ? 0 : 2, vtImgOrder: this.state.vw >= 1000 ? 0 : 1,
+      vtPlay: this.state.vtPaused ? 'paused' : 'running',
+      vtPause: () => { this.setState({ vtPaused: true }); this.vtStop(); }, vtResume: () => { this.setState({ vtPaused: false }); this.vtStart(); },
+      vtPrev: e => { e.stopPropagation(); this.vtGo(-1); }, vtNext: e => { e.stopPropagation(); this.vtGo(1); },
+      vtItems: this.galLeftList().map((g, i, arr) => { const a = this.state.vtIdx || 0, on = i === a; return { ...g, num: String(i + 1).padStart(2, '0'), active: on, color: on ? '#f3f5f7' : 'rgba(154,163,173,0.6)', border: i === 0 ? 'transparent' : 'rgba(35,41,49,0.8)', op: on ? 1 : 0, y: on ? '0%' : (i < a ? '-100%' : '100%'), z: on ? 1 : 0, pe: on ? 'auto' : 'none', pick: () => this.vtSet(i), openImg: e => { if (g.link) window.open(g.link, '_blank', 'noopener'); else g.open(e); }, cursor: g.link ? 'pointer' : 'zoom-in' }; }),
+      galLeftBento: (() => { const spans = [['span 2', 'span 2'], ['auto', 'span 1'], ['auto', 'span 1'], ['auto', 'span 2'], ['auto', 'span 1'], ['span 2', 'span 1'], ['auto', 'span 1']]; return this.galLeftList().map((g, i) => { const [col, row] = spans[i % spans.length]; return { ...g, col, row, aria: 'View ' + g.alt, open: e => { if (this.bentoMoved) return; g.open(e); }, key: e => { if (e.key === 'Enter') g.open(e); } }; }); })(),
+      galLeftCols: (() => { const n = this.state.vw >= 1200 ? 4 : this.state.vw >= 640 ? 3 : 2, cols = Array.from({ length: n }, () => ({ items: [] })); this.galLeftList().forEach((g, i) => cols[i % n].items.push(g)); return cols; })(),
+      tabShelfDisp: this.state.galTab === 1 ? 'flex' : 'none',
+      tabBooksDisp: this.state.galTab === 2 ? 'flex' : 'none',
+      galWrapCols: this.state.vw >= 900 ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      galShelf2: ["SAP Store","Verint scorecard","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP patient records","Smart City","Verint persona","Verint score cards","Social app 1","Social app 2","Social app 3","Lastline network events","Z-meet","Folloze nSight"].map((alt, i) => { const src = ['assets/sh2-01.jpg','assets/sh2-02.jpg','assets/sh2-03.jpg','assets/sh2-04.jpg','assets/sh2-05.jpg','assets/sh2-06.jpg','assets/sh2-07.jpg','assets/sh2-08.jpg','assets/sh2-09.jpg','assets/sh2-10.jpg','assets/sh2-11.jpg','assets/sh2-12.jpg','assets/sh2-13.jpg','assets/sh2-14.jpg','assets/sh2-15.jpg'][i], key = 'T' + i; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; }),
+      galRight: ["The Design of Everyday Things","The Golden Ratio","Clanlands","Don’t Make Me Think","Hyperion Cantos","OMFG, Bees!","Sababa","SuperLife"].map((alt, i) => { const src = ['assets/book-1.jpg','assets/book-2.jpg','assets/book-3.jpg','assets/book-4.jpg','assets/book-5.jpg','assets/book-6.jpg','assets/book-7.jpg','assets/book-8.jpg'][i], key = 'R' + i, link = { 0: 'https://a.co/d/09EMovAp', 1: 'https://a.co/d/0gXwXEaM', 2: 'https://a.co/d/0gd5LAtX', 3: 'https://a.co/d/02B8u98a', 4: 'https://a.co/d/06d3sVNE', 5: 'https://a.co/d/0cPTq9Vh', 6: 'https://a.co/d/0aD8cC9f', 7: 'https://a.co/d/09iyygUu' }[i]; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => { if (link) window.open(link, '_blank', 'noopener'); else this.openGal(e, src, alt, key); } }; }),
+      galOpen: !!this.state.gal,
+      galSrc: this.state.gal ? this.state.gal.src : '', galAlt: this.state.gal ? this.state.gal.alt : '',
+      galL: this.state.gal ? this.state.gal.l : 0, galT: this.state.gal ? this.state.gal.t : 0,
+      galW: this.state.gal ? this.state.gal.w : 0, galH: this.state.gal ? this.state.gal.h : 0,
+      galBg: this.state.gal ? this.state.gal.bg : 0,
+      galClose: () => this.closeGal(),
+      stickyWrapRef: this.stickyWrapRef,
+      journeyRef: this.journeyRef, journeySliderRef: this.journeySliderRef, journeyLineRef: this.journeyLineRef,
+      journeyTop: this.journeyItems.filter(x => x.top),
+      journeyBottom: this.journeyItems.filter(x => !x.top),
+      frameH: mobF ? 'calc(4 * 64vw + 12px)' : 'min(88vh,max(560px,64vw))',
+      frameCols: tracks(cols, hv == null ? -1 : hv % cols),
+      frameRows: tracks(rows, hv == null ? -1 : Math.floor(hv / cols)),
+      ov: (() => { const f = frames[this.state.ovIdx ?? 0] || frames[0]; return { ...f, page: this.state.ovOpen || this.state.ovIdx != null ? (f.page || '') : '', noPage: !f.page }; })(),
+      ovOpacity: this.state.ovOpen ? 1 : 0,
+      ovY: this.state.ovOpen ? '0px' : '40px',
+      ovPE: this.state.ovOpen ? 'auto' : 'none',
+      ovVis: this.state.ovOpen ? 'visible' : 'hidden',
+      ovVisDelay: this.state.ovOpen ? '0s' : '.9s',
+      closeOv: () => this.closeOv(),
+      frameLeave: () => { clearTimeout(this.hovT); this.hovT = setTimeout(() => this.setState({ hov: null }), 200); document.querySelectorAll('#work-grid video').forEach(v => v.pause()); },
+      stickyPanels: [
+        { k: 'WHY', img: 'assets/ud-why.jpg', alt: 'Two kids in suits with toy rocket packs', v: 'I believe design is a strategic force that turns ambiguity into opportunity, aligning people, products, and purpose to drive meaningful business growth. Human-Centered design does more than improve experiences: it unlocks potential and adoption, fuels innovation, and creates lasting impact. I lead teams to get there by building a shared vision, empowering designers to do their best work, and partnering across disciplines.' },
+        { k: 'HOW', img: 'assets/ud-how.jpg', alt: 'Portrait of Udi listening closely', v: 'I listen closely to users, customers, and the market pulse; then turn those insights into clear, high-impact product visions and prototypes that make complex ideas actionable, fast. I lead with empathy, design agility, and strategic clarity, from MVPs to scalable systems, keeping cross-functional teams focused on real user needs and evolving business value.' },
+        { k: 'WHAT', img: 'assets/ud-what.jpg', alt: 'Double diamond design process on a laptop screen', v: 'I design future-proof product experiences that accelerate adoption, unlock growth, and win markets. I deliver full-spectrum design leadership, from AI-powered platforms and IPO-ready solutions to high-fidelity prototypes that close strategic deals with top-tier enterprise customers. I build and guide high-performing teams, and I work side by side with product, engineering, and sales to turn a shared vision into results.' },
+      ].map((x, i) => ({ ...x, ref: this.stickyRefs[i], imgRef: this.stickyImgRefs[i], z: 3 - i, op: i === 0 ? 1 : 0 })),
+      stickyCols: this.state.vw >= 900 ? '42fr 50fr' : 'minmax(0,1fr)',
+      stickyRows: this.state.vw >= 900 ? 'minmax(0,1fr)' : 'minmax(0,1fr) minmax(0,1.1fr)',
+      showNav: this.state.vw >= 900,
+      showHeroP: this.state.vh >= 420,
+      showHeroCue: this.state.vh >= 560,
+      heroBgRef: this.heroBgRef, heroFgRef: this.heroFgRef, heroFadeRef: this.heroFadeRef,
+      lines: [
+        { a: 'Yes, this is a real photo, not AI generated', em: '', sub: `Photographer: ${this.props.photographer && this.props.photographer !== '[Photographer name]' ? this.props.photographer : 'Rich Vintage'}` },
+        { a: 'as real as problems,\nstill waiting to be solved;', em: '', sub: '' },
+        { a: 'Human Intelligence\nis how we solve them,', em: '', sub: '' },
+        { a: 'Powered by Design,', em: '', sub: '', late: 'and AI.', lateRef: this.lateRef },
+      ].map((l, i) => ({ late: '', ...l, num: String(i + 1).padStart(2, '0'), ref: this.lineRefs[i] })),
+      introRef: this.introRef, headerRef: this.headerRef, cueRef: this.cueRef, fadeRef: this.fadeRef,
+      panRef: this.panRef, curtainRef: this.curtainRef, stageRef: this.stageRef,
+      skipOpacity: this.state.ready && !this.state.past ? 1 : 0,
+      skipPE: this.state.ready && !this.state.past ? 'auto' : 'none',
+      toHero: e => {
+        e.preventDefault();
+        const t = document.getElementById('prologue');
+        if (t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY, behavior: 'smooth' });
+      },
+      skip: e => {
+        e.preventDefault();
+        const t = document.getElementById('prologue');
+        const c = this.curtainRef.current;
+        if (!t) return;
+        const jump = () => window.scrollTo({ top: t.getBoundingClientRect().top + scrollY, behavior: 'instant' });
+        if (!c) return jump();
+        c.style.pointerEvents = 'auto';
+        c.style.opacity = '1';
+        setTimeout(() => {
+          jump();
+          requestAnimationFrame(() => { c.style.opacity = '0'; c.style.pointerEvents = 'none'; });
+        }, 620);
+      },
+      progressRef: this.progressRef,
+      dialRef: this.dialRef,
+      handRef: this.handRef,
+    };
+  }
+}
+</script>
+</body>
+
+</html>
