@@ -603,6 +603,8 @@ class Component extends DCLogic {
     return ["Folloze nSight","Lastline network events","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP Store","SAP patient records","Smart City","Social app 1","Social app 2","Social app 3","Verint scorecard","Verint score cards","Verint persona","Z-meet"].map((alt, i) => { const src = 'assets/shelf-' + String(i + 1).padStart(2, '0') + '.jpg', key = 'S' + i; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
   }
   componentDidMount() {
+    const fg = () => { if (this.heroBgRef.current && window.attachLiquidPortrait && !this.fgOff) this.fgOff = window.attachLiquidPortrait(this.heroBgRef.current); };
+    if (window.attachLiquidPortrait) fg(); else { const s = document.createElement('script'); s.src = './liquid-portrait.js'; s.onload = fg; document.head.appendChild(s); }
     this.onGalKey = e => { if (e.key === 'Escape') this.closeGal(); };
     addEventListener('keydown', this.onGalKey);
     this.onStickyScroll = () => { if (!this.stickyTick) { this.stickyTick = requestAnimationFrame(() => { this.stickyTick = null; this.updateSticky(); }); } };
@@ -644,6 +646,7 @@ class Component extends DCLogic {
   }
   componentDidUpdate() { this.setupReveals(); }
   componentWillUnmount() {
+    if (this.fgOff) this.fgOff();
     clearInterval(this.vtT);
     removeEventListener('keydown', this.onGalKey); clearTimeout(this.galT);
     removeEventListener('scroll', this.onStickyScroll); removeEventListener('resize', this.onStickyScroll);

@@ -13,3 +13,8 @@ Static site. No build step.
 ## Pages
 - `index.html` — home
 - `socure.html`, `zepl.html`, `folloze.html`, `xtend.html` — case studies
+
+## Scripts
+- `support.js` — page runtime (required)
+- `liquid-portrait.js` — hero particle effect (desktop only)
+- `image-slot.js`, `fractal-glass.js` — helpers
