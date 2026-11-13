@@ -28,6 +28,7 @@ html{scroll-behavior:smooth}
 a{color:#f3f5f7;text-decoration:none}
 a:hover{color:#14d6c4}
 ::selection{background:#14d6c4;color:#0b0d10}
+[data-cf]{outline:none}[data-cf]:focus-visible{outline:2px solid #14d6c4;outline-offset:-2px}
 @keyframes vtProg{from{transform:scaleY(0)}to{transform:scaleY(1)}}
 </style>
 <script src="./image-slot.js"></script>
@@ -292,8 +293,13 @@ a:hover{color:#14d6c4}
 
   <sc-if value="{{ galOpen }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed;inset:0;z-index:60">
-      <div onClick="{{ galClose }}" style="position:absolute;inset:0;background:rgba(0,0,0,0.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);opacity:{{ galBg }};transition:opacity .35s ease"></div>
+      <div onClick="{{ galClose }}" style="position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:{{ galBg }};transition:opacity .35s ease"></div>
       <img src="{{ galSrc }}" alt="{{ galAlt }}" onClick="{{ galClose }}" draggable="false" style="position:fixed;left:{{ galL }}px;top:{{ galT }}px;width:{{ galW }}px;height:{{ galH }}px;object-fit:cover;border-radius:clamp(10px,0.7vw,24px);box-shadow:0 30px 80px rgba(0,0,0,0.5);cursor:zoom-out;transition:left .45s cubic-bezier(.2,.8,.2,1),top .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1),height .45s cubic-bezier(.2,.8,.2,1)">
+      <sc-if value="{{ galNav }}" hint-placeholder-val="{{ false }}"><div style="position:fixed;left:0;right:0;top:{{ galNavT }}px;display:flex;justify-content:center;align-items:center;gap:clamp(12px,1.2vw,28px);padding:0 16px;opacity:{{ galBg }};transition:opacity .3s ease,top .45s cubic-bezier(.2,.8,.2,1);pointer-events:none">
+        <button type="button" onClick="{{ galPrev }}" aria-label="Previous image" style="flex:none;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,0.12);color:#fff;cursor:pointer;pointer-events:auto;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,color .2s" style-hover="background:rgba(255,255,255,0.22);color:#14d6c4"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg></button>
+        <span aria-live="polite" style="min-width:0;font-family:'IBM Plex Mono',monospace;font-size:calc(0.975 * (clamp(13px,0.677vw,26px)));letter-spacing:0.1em;text-transform:uppercase;color:#f3f5f7;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ galAlt }}</span>
+        <button type="button" onClick="{{ galNext }}" aria-label="Next image" style="flex:none;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,0.12);color:#fff;cursor:pointer;pointer-events:auto;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .2s,color .2s" style-hover="background:rgba(255,255,255,0.22);color:#14d6c4"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg></button>
+      </div></sc-if>
       <button type="button" onClick="{{ galClose }}" aria-label="Close gallery" style="position:absolute;top:24px;right:24px;width:44px;height:44px;display:grid;place-items:center;border:0;border-radius:50%;background:rgba(255,255,255,0.1);color:#fff;cursor:pointer;backdrop-filter:blur(8px);opacity:{{ galBg }};transition:opacity .3s ease,background .2s" style-hover="background:rgba(255,255,255,0.2)">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>
       </button>
@@ -357,13 +363,24 @@ a:hover{color:#14d6c4}
     <div data-reveal="" style="margin-top:clamp(40px,8vh,192px)">
       <div style="min-width:0;display:flex;flex-direction:column;gap:clamp(16px,2.4vh,48px)">
         <h3 style="margin:0 0 clamp(16px,2.4vh,48px);font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:calc(1.5 * (clamp(30px,2.6vw,96px)));line-height:1;color:#14d6c4"><i>Shelved, not forgotten</i><br><span data-poc="" style="display:block;margin-top:12px;font-family:'IBM Plex Sans',sans-serif;font-size:calc(0.75 * (clamp(18px,calc(0.9vw + 10px),36px)));line-height:1.3;color:#ffffff;text-wrap:pretty">Projects and POCs that never went live, but inspired live products</span></h3>
-        <div style="column-count:{{ galCols }};column-gap:clamp(8px,0.8vw,24px)">
-          <sc-for list="{{ galShelf2 }}" as="g" hint-placeholder-count="6">
-            <button type="button" onClick="{{ g.open }}" aria-label="Open image" style="display:block;width:100%;padding:0;margin:0 0 clamp(8px,0.8vw,24px);border:0;background:#111419;border-radius:clamp(10px,0.7vw,24px);overflow:hidden;break-inside:avoid;cursor:pointer;opacity:{{ g.hide }};transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .25s" style-hover="transform:scale(0.98);filter:brightness(0.9)" style-active="transform:scale(0.95)">
-              <img src="{{ g.src }}" alt="{{ g.alt }}" loading="lazy" style="display:block;width:100%;height:auto">
-            </button>
-          </sc-for>
+        <div style="position:relative;--cf-card:clamp(240px,38vw,900px)">
+          <div data-cf="" ref="{{ cfRef }}" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Shelved projects. Drag or use the arrow keys to browse, Enter to enlarge." style="overflow:hidden;padding:clamp(24px,4vh,64px) 0;cursor:grab;touch-action:pan-y;perspective:calc(var(--cf-card) * 3)">
+            <div style="position:relative;height:calc(var(--cf-card) * 0.75);transform-style:preserve-3d;user-select:none;-webkit-user-select:none">
+              <sc-for list="{{ galShelf2 }}" as="g" hint-placeholder-count="6">
+                <button type="button" data-cf-card="" tabindex="-1" onClick="{{ g.open }}" aria-label="{{ g.label }}" style="position:absolute;left:50%;top:0;width:var(--cf-card);aspect-ratio:4/3;padding:0;margin:0;border:0;background:#111419;border-radius:clamp(10px,0.7vw,24px);overflow:hidden;cursor:zoom-in;box-shadow:0 24px 60px rgba(0,0,0,0.5);will-change:transform">
+                  <img src="{{ g.src }}" alt="{{ g.alt }}" draggable="false" style="display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;-webkit-user-select:none">
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          <button type="button" onClick="{{ cfPrev }}" aria-label="Previous project" style="position:absolute;left:clamp(4px,1vw,24px);top:50%;translate:0 -50%;z-index:200;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(11,13,16,0.7);color:#f3f5f7;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .25s,background .25s" style-hover="color:#14d6c4;background:rgba(11,13,16,0.95)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+          </button>
+          <button type="button" onClick="{{ cfNext }}" aria-label="Next project" style="position:absolute;right:clamp(4px,1vw,24px);top:50%;translate:0 -50%;z-index:200;width:44px;height:44px;display:grid;place-items:center;padding:0;border:0;border-radius:50%;background:rgba(11,13,16,0.7);color:#f3f5f7;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:color .25s,background .25s" style-hover="color:#14d6c4;background:rgba(11,13,16,0.95)">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </button>
         </div>
+        <p aria-live="polite" style="margin:0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:calc(0.975 * (clamp(13px,0.677vw,26px)));letter-spacing:0.1em;text-transform:uppercase;color:#9aa3ad">{{ cfCaption }}</p>
       </div>
     </div>
   </section>
@@ -465,21 +482,94 @@ class Component extends DCLogic {
     if (ready !== this.state.ready) this.setState({ ready });
   }
 
-  openOv(i) {
+  slugs = ['socure', 'zepl', 'folloze', 'xtend'];
+  pathMode() { try { return window.top === window && /^https?:$/.test(location.protocol) && !/\.dc\.html$/i.test(location.pathname); } catch (e) { return false; } }
+  curSlug() { const h = location.hash.slice(1).toLowerCase(); if (this.slugs.indexOf(h) >= 0) return h; return this.pathMode() ? (location.pathname.split('/').pop() || '').replace(/\.html$/i, '').toLowerCase() : ''; }
+  setUrl(slug) {
+    try {
+      if (this.pathMode()) { if (slug) history.pushState({ project: slug }, '', slug); else history.replaceState(null, '', './'); }
+      else { const h = slug ? '#' + slug : '#work-grid-2'; if (location.hash !== h) location.hash = h; }
+    } catch (e) {}
+  }
+  openOv(i, silent) {
+    if (!silent) this.setUrl(this.slugs[i]);
     clearTimeout(this.ovT);
     this.setState({ ovIdx: i, ovOpen: true });
     document.documentElement.style.overflow = 'hidden';
     document.querySelectorAll('#work-grid video').forEach(v => v.pause());
   }
-  closeOv() {
+  closeOv(silent) {
+    if (this.state.ovOpen && !silent) this.setUrl('');
     if (!this.state.ovOpen) return;
     this.setState({ ovOpen: false });
     document.documentElement.style.overflow = '';
-    const w = document.getElementById('work-grid');
+    const w = document.getElementById('work-grid-2');
     if (w) window.scrollTo({ top: w.getBoundingClientRect().top + scrollY, behavior: 'instant' });
     this.ovT = setTimeout(() => this.setState({ ovIdx: null }), 950);
   }
 
+  cfRef = React.createRef(); cfPos = 0; cfTarget = 0;
+  cfCards() { const f = this.cfRef.current; return f ? f.querySelectorAll('[data-cf-card]') : []; }
+  cfPaint() {
+    const cards = this.cfCards(), count = cards.length; if (!count) return;
+    const width = cards[0].offsetWidth; if (!width) return;
+    const pitch = width * 1.05, pos = this.cfPos;
+    cards.forEach((card, index) => {
+      let o = index - pos; o = ((o % count) + count) % count; if (o > count / 2) o -= count;
+      const d = Math.abs(o), ramp = Math.pow(d, 0.56), tilt = Math.min(44 * ramp, 82) * Math.sign(o);
+      card.style.transform = `translateX(calc(-50% + ${(o * pitch).toFixed(2)}px)) translateZ(${(-0.6 * width * ramp).toFixed(2)}px) rotateY(${(-tilt).toFixed(3)}deg)`;
+      const edge = Math.min(1, Math.max(0, count / 2 - d));
+      card.style.opacity = String(Math.max(0, 1 - 0.1 * d) * edge);
+      card.style.zIndex = String(100 - Math.round(d));
+    });
+  }
+  cfSelect(pos) { const n = this.cfCards().length || 1, i = ((Math.round(pos) % n) + n) % n; if (i !== (this.state.cfSel || 0)) this.setState({ cfSel: i }); }
+  cfSettle(target) {
+    cancelAnimationFrame(this.cfRaf); this.cfRaf = null;
+    this.cfTarget = target; this.cfSelect(target);
+    if (this.reduced) { this.cfPos = target; this.cfPaint(); return; }
+    const step = () => {
+      const r = target - this.cfPos;
+      if (Math.abs(r) < 0.0004) { this.cfPos = target; this.cfPaint(); this.cfRaf = null; return; }
+      this.cfPos += r * 0.16; this.cfPaint(); this.cfRaf = requestAnimationFrame(step);
+    };
+    this.cfRaf = requestAnimationFrame(step);
+  }
+  cfNudge(by) { this.cfSettle(Math.round(this.cfTarget) + by); }
+  initCf() {
+    const cf = this.cfRef.current; if (!cf) return;
+    this.cfPaint();
+    if ('ResizeObserver' in window) { this.cfRO = new ResizeObserver(() => this.cfPaint()); this.cfRO.observe(cf); }
+    cf.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      cancelAnimationFrame(this.cfRaf); this.cfRaf = null; this.cfTarget = this.cfPos;
+      this.cfDrag = { id: e.pointerId, x: e.clientX, pos: this.cfPos, v: 0, t: performance.now(), moved: false };
+    });
+    cf.addEventListener('pointermove', e => {
+      const d = this.cfDrag; if (!d || d.id !== e.pointerId) return;
+      if (e.pointerType === 'mouse' && e.buttons === 0) { this.cfDrag = null; this.cfSettle(Math.round(this.cfPos)); return; }
+      const dx = e.clientX - d.x;
+      if (!d.moved) { if (Math.abs(dx) < 5) return; d.moved = true; this.cfMoved = true; cf.style.cursor = 'grabbing'; try { cf.setPointerCapture(e.pointerId); } catch (_) {} }
+      const cards = this.cfCards(), pitch = (cards[0] ? cards[0].offsetWidth : 0) * 1.05; if (!pitch) return;
+      const now = performance.now(), prev = this.cfPos;
+      this.cfPos = d.pos - dx / pitch;
+      d.v = ((this.cfPos - prev) / Math.max(now - d.t, 1)) * 1000; d.t = now;
+      this.cfSelect(this.cfPos); this.cfPaint();
+    });
+    const end = e => {
+      const d = this.cfDrag; if (!d || d.id !== e.pointerId) return;
+      this.cfDrag = null; cf.style.cursor = 'grab';
+      this.cfSettle(Math.round(this.cfPos + (d.moved ? Math.max(-2, Math.min(2, d.v * 0.18)) : 0)));
+      if (d.moved) setTimeout(() => { this.cfMoved = false; }, 0);
+    };
+    cf.addEventListener('pointerup', end); cf.addEventListener('pointercancel', end);
+    cf.addEventListener('keydown', e => {
+      if (this.state.gal) return;
+      if (e.key === 'ArrowLeft') { e.preventDefault(); this.cfNudge(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); this.cfNudge(1); }
+      else if ((e.key === 'Enter' || e.key === ' ') && e.target === cf) { e.preventDefault(); const c = this.cfCards()[this.state.cfSel || 0]; if (c) c.click(); }
+    });
+  }
   initRoll() {
     const root = this.statsRef.current; if (!root || !('IntersectionObserver' in window)) return;
     const run = () => {
@@ -574,8 +664,18 @@ class Component extends DCLogic {
     this.galFrom = { l: r.left, t: r.top, w: r.width, h: r.height }; this.galBtn = btn;
     document.body.style.overflow = 'hidden';
     this.setState({ gal: { src, alt, key, ...this.galFrom, bg: 0 } }, () => {
-      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gal: { src, alt, key, l: (innerWidth - w) / 2, t: (innerHeight - hh) / 2, w, h: hh, bg: 1 } })));
+      requestAnimationFrame(() => requestAnimationFrame(() => this.setState({ gal: { src, alt, key, ...this.galFit(nw, nh, key), bg: 1 } })));
     });
+  }
+  galFit(nw, nh, key) { const res = key && key[0] === 'T' ? 76 : 0, s = Math.min(innerWidth * 0.95 / nw, (innerHeight * 0.9 - res) / nh), w = nw * s, h = nh * s; return { l: (innerWidth - w) / 2, t: (innerHeight - h - res) / 2, w, h }; }
+  galStep(by) {
+    const g = this.state.gal; if (!g || g.closing || !g.key || g.key[0] !== 'T') return;
+    const alts = this.cfAlts || [], n = alts.length; if (!n) return;
+    const i = (((+g.key.slice(1) + by) % n) + n) % n, src = 'assets/sh2-' + String(i + 1).padStart(2, '0') + '.jpg', alt = alts[i], key = 'T' + i;
+    const im = new Image();
+    im.onload = () => { const cur = this.state.gal; if (!cur || cur.closing) return; this.galBtn = this.cfCards()[i] || this.galBtn; this.setState({ gal: { src, alt, key, ...this.galFit(im.naturalWidth, im.naturalHeight, key), bg: 1 } }); };
+    im.src = src;
+    this.cfSettle(i + Math.round((this.cfTarget - i) / n) * n);
   }
   closeGal() {
     const g = this.state.gal; if (!g || g.closing) return;
@@ -597,7 +697,7 @@ class Component extends DCLogic {
   vtStart() { clearInterval(this.vtT); this.vtT = setInterval(() => { if (!this.state.gal) this.vtGo(1); }, 5000); }
   vtStop() { clearInterval(this.vtT); }
   galLeftList() {
-    return [["assets/post-2.jpg","Draw me a sheep","https://lnkd.in/p/gxqWDvCc"],["assets/post-3.png","The cost of 'Being First' strategies","https://www.linkedin.com/pulse/ai-first-mobile-first-strategies-weve-been-here-before-udi-waizer-thv0c"],["assets/post-4.jpg","The Ephemeral Experience","https://www.linkedin.com/pulse/ui-should-designed-respond-udi-waizer-nh3oc/"],["assets/post-5.jpg","Embrace your inner multitool !","https://lnkd.in/p/g2cP5qxH"],["assets/post-6.jpg","Oldest UI Component","https://lnkd.in/p/gNasCVb6"]].map(([src, alt, link], i) => { const key = 'L' + i; return { src, alt, link, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
+    return [["assets/post-8.jpg","Users-Adaptive Apps","https://lnkd.in/p/gcWbyU8r"],["assets/post-9.jpg","Your Company Has Amnesia","https://lnkd.in/p/ghc2GzAN"],["assets/post-2.jpg","Draw me a sheep","https://lnkd.in/p/gxqWDvCc"],["assets/post-3.png","The cost of 'Being First' strategies","https://www.linkedin.com/pulse/ai-first-mobile-first-strategies-weve-been-here-before-udi-waizer-thv0c"],["assets/post-4.jpg","The Ephemeral Experience","https://www.linkedin.com/pulse/ui-should-designed-respond-udi-waizer-nh3oc/"],["assets/post-5.jpg","Embrace your inner multitool !","https://lnkd.in/p/g2cP5qxH"],["assets/post-6.jpg","Oldest UI Component","https://lnkd.in/p/gNasCVb6"]].map(([src, alt, link], i) => { const key = 'L' + i; return { src, alt, link, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
   }
   galShelfList() {
     return ["Folloze nSight","Lastline network events","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP Store","SAP patient records","Smart City","Social app 1","Social app 2","Social app 3","Verint scorecard","Verint score cards","Verint persona","Z-meet"].map((alt, i) => { const src = 'assets/shelf-' + String(i + 1).padStart(2, '0') + '.jpg', key = 'S' + i; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; });
@@ -605,7 +705,7 @@ class Component extends DCLogic {
   componentDidMount() {
     const fg = () => { if (this.heroBgRef.current && window.attachLiquidPortrait && !this.fgOff) this.fgOff = window.attachLiquidPortrait(this.heroBgRef.current); };
     if (window.attachLiquidPortrait) fg(); else { const s = document.createElement('script'); s.src = './liquid-portrait.js'; s.onload = fg; document.head.appendChild(s); }
-    this.onGalKey = e => { if (e.key === 'Escape') this.closeGal(); };
+    this.onGalKey = e => { if (e.key === 'Escape') this.closeGal(); else if (this.state.gal && e.key === 'ArrowLeft') { e.preventDefault(); this.galStep(-1); } else if (this.state.gal && e.key === 'ArrowRight') { e.preventDefault(); this.galStep(1); } };
     addEventListener('keydown', this.onGalKey);
     this.onStickyScroll = () => { if (!this.stickyTick) { this.stickyTick = requestAnimationFrame(() => { this.stickyTick = null; this.updateSticky(); }); } };
     addEventListener('scroll', this.onStickyScroll, { passive: true }); addEventListener('resize', this.onStickyScroll);
@@ -614,12 +714,15 @@ class Component extends DCLogic {
     try { this.updateSticky(); } catch (e) { console.error(e); }
     this.onJourneyScroll();
     this.initRoll();
+    try { this.initCf(); } catch (e) { console.error(e); }
     this.onKey = e => { if (e.key === 'Escape') this.closeOv(); };
     addEventListener('keydown', this.onKey);
     this.onMsg = e => { if (e.data && e.data.type === 'close-project') this.closeOv(); };
     addEventListener('message', this.onMsg);
-    if (location.hash === '#work-grid') {
-      const go = () => { const w = document.getElementById('work-grid'); if (w) window.scrollTo({ top: w.getBoundingClientRect().top + scrollY, behavior: 'instant' }); };
+    this.onHash = () => { const i = this.slugs.indexOf(this.curSlug()); if (i >= 0) { if (!this.state.ovOpen || this.state.ovIdx !== i) this.openOv(i, true); } else if (this.state.ovOpen) this.closeOv(true); };
+    addEventListener('hashchange', this.onHash); addEventListener('popstate', this.onHash); this.onHash();
+    if (location.hash === '#work-grid' || location.hash === '#work-grid-2') {
+      const go = () => { const w = document.getElementById('work-grid-2'); if (w) window.scrollTo({ top: w.getBoundingClientRect().top + scrollY, behavior: 'instant' }); };
       requestAnimationFrame(go); setTimeout(go, 300);
     }
     this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -644,7 +747,7 @@ class Component extends DCLogic {
     this.onScroll();
     this.setupReveals();
   }
-  componentDidUpdate() { this.setupReveals(); }
+  componentDidUpdate() { this.setupReveals(); if (!this.cfRaf && !this.cfDrag) this.cfPaint(); }
   componentWillUnmount() {
     if (this.fgOff) this.fgOff();
     clearInterval(this.vtT);
@@ -655,6 +758,8 @@ class Component extends DCLogic {
     removeEventListener('scroll', this.onScroll);
     removeEventListener('resize', this.onResize);
     removeEventListener('keydown', this.onKey);
+    removeEventListener('hashchange', this.onHash); removeEventListener('popstate', this.onHash);
+    cancelAnimationFrame(this.cfRaf); this.cfRO && this.cfRO.disconnect();
     clearTimeout(this.skipTimer);
     this.io && this.io.disconnect();
   }
@@ -708,7 +813,7 @@ class Component extends DCLogic {
           }, this.state.hov == null ? 120 : 260);
         } };
     });
-    const labels = [['1', 'About', '#about'], ['2', 'Work', '#work-grid']];
+    const labels = [['1', 'About', '#about'], ['2', 'Work', '#work-grid-2']];
     const projects = [
       { title: 'Northlight', client: 'Halden Energy', category: 'Brand film', year: '2026', media: 'brand film still' },
       { title: 'Quiet Ledger', client: 'Tally', category: 'UI animation', year: '2025', media: 'product UI loop' },
@@ -737,7 +842,9 @@ class Component extends DCLogic {
       tabShelfDisp: this.state.galTab === 1 ? 'flex' : 'none',
       tabBooksDisp: this.state.galTab === 2 ? 'flex' : 'none',
       galWrapCols: this.state.vw >= 900 ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)',
-      galShelf2: ["SAP Store","Verint scorecard","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP patient records","Smart City","Verint persona","Verint score cards","Social app 1","Social app 2","Social app 3","Lastline network events","Z-meet","Folloze nSight"].map((alt, i) => { const src = 'assets/sh2-' + String(i + 1).padStart(2, '0') + '.jpg', key = 'T' + i; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => this.openGal(e, src, alt, key) }; }),
+      galShelf2: (this.cfAlts = ["SAP Store","Verint scorecard","SAP Sustainability Report","Coca-Cola Store","Coca-Cola Store product","SAP patient records","Smart City","Verint persona","Verint score cards","Social app 1","Social app 2","Social app 3","Lastline network events","Z-meet","Folloze nSight"]).map((alt, i) => { const src = 'assets/sh2-' + String(i + 1).padStart(2, '0') + '.jpg', key = 'T' + i; return { src, alt, label: 'Enlarge ' + alt, open: e => { if (this.cfMoved) return; this.openGal(e, src, alt, key); } }; }),
+      cfRef: this.cfRef, cfPrev: () => this.cfNudge(-1), cfNext: () => this.cfNudge(1),
+      cfCaption: (this.cfAlts || [])[this.state.cfSel || 0] || '',
       galRight: ["The Design of Everyday Things","The Golden Ratio","Clanlands","Don’t Make Me Think","Hyperion Cantos","OMFG, Bees!","Sababa","SuperLife"].map((alt, i) => { const src = 'assets/book-' + (i + 1) + '.jpg', key = 'R' + i, link = { 0: 'https://a.co/d/09EMovAp', 1: 'https://a.co/d/0gXwXEaM', 2: 'https://a.co/d/0gd5LAtX', 3: 'https://a.co/d/02B8u98a', 4: 'https://a.co/d/06d3sVNE', 5: 'https://a.co/d/0cPTq9Vh', 6: 'https://a.co/d/0aD8cC9f', 7: 'https://a.co/d/09iyygUu' }[i]; return { src, alt, hide: this.state.gal && this.state.gal.key === key ? 0 : 1, open: e => { if (link) window.open(link, '_blank', 'noopener'); else this.openGal(e, src, alt, key); } }; }),
       galOpen: !!this.state.gal,
       galSrc: this.state.gal ? this.state.gal.src : '', galAlt: this.state.gal ? this.state.gal.alt : '',
@@ -745,6 +852,9 @@ class Component extends DCLogic {
       galW: this.state.gal ? this.state.gal.w : 0, galH: this.state.gal ? this.state.gal.h : 0,
       galBg: this.state.gal ? this.state.gal.bg : 0,
       galClose: () => this.closeGal(),
+      galNav: !!(this.state.gal && this.state.gal.key && this.state.gal.key[0] === 'T'),
+      galNavT: this.state.gal ? Math.round(this.state.gal.t + this.state.gal.h + 16) : 0,
+      galPrev: () => this.galStep(-1), galNext: () => this.galStep(1),
       stickyWrapRef: this.stickyWrapRef,
       journeyRef: this.journeyRef, journeySliderRef: this.journeySliderRef, journeyLineRef: this.journeyLineRef,
       journeyTop: this.journeyItems.filter(x => x.top),
